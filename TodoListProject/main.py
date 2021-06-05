@@ -2,7 +2,8 @@
 
 
 def main():
-
+    from TodoListProject.ListUtilities import get_todo_list
+    get_todo_list("list1.txt")
     """Load the TodoList project"""
 
 
