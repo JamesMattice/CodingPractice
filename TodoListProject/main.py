@@ -2,8 +2,8 @@
 
 
 def main():
-    from TodoListProject.ListUtilities import get_todo_list
-    get_todo_list("list1.txt")
+    from ListUtilities import del_todo_list
+    del_todo_list("list2.txt")
     """Load the TodoList project"""
 
 
