@@ -27,6 +27,7 @@ Full Functionality:
 		Status of task
 		Level of complexity/time
 		Notes about the task
+		Associated tasks (prereqs, similar, mutually exclusive)
 	
 	Methods:
 		Get Daily list
@@ -44,4 +45,10 @@ Full Functionality:
 			formatting
 			types
 		UI (user interface)
+		Progression 
+		Search Functions
 		
+		
+Brainstorming stuff
+	Integration with 3rd party calendar programs
+	Social activity (group finder, friend scheduling, etc)
