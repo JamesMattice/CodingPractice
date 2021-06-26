@@ -8,7 +8,9 @@ def main():
     from BaseTodoList import TodoList
     x = TodoList("list3")
     x.remove_item("Hello")
-
+    from InProgressListDev import SuperBasicTodoList
+    basic_list = SuperBasicTodoList()
+    x.add_item(str(basic_list.contents))
 
 if __name__ == "__main__":
     main()
