@@ -1,39 +1,52 @@
-"""Base class for Todo lists"""
-
-# Name
-# Ability to add to the list
-# Ability to remove items from the list
 # Ability to view/get items from list
+#LIST_PATH = "./featherDuster/"
 
-LIST_PATH = "./featherDuster/"
+import datetime
 
 
-class TodoList:
+class SuperBasicTodoList:
 
-    def __init__(self, name):
-        self.filename = name + ".txt"
-        # self.items = items
+    frequency = ("once", "hourly", "daily", "weekly", "fortnight",
+                 "monthly", "quarterly", "yearly", "infinite")
 
-    def add_item(self, item):
-        with open((LIST_PATH + self.filename), 'a') as f:
-            f.write(item + '\n')
+    status = ("to be completed", "active task", "partially completed", "done")
 
-    def remove_item(self, item):
-        with open((LIST_PATH + self.filename), 'r+') as f:
-            data = f.readlines()
-            f.seek(0, 0)
-            for line in data:
-                # print(line)
-                if line.strip("\n") != item:
-                    f.write(line)
-            f.truncate()
+    def __init__(self):
+        # self.contents = [name, date_of_next, frequency_of_repetition]
+        self.contents = ["new task", datetime.datetime.max, self.frequency[0],
+                         self.status[0]]
 
-    def get_item(self, item):
-        with open((LIST_PATH + self.filename), 'r') as f:
-            data = f.readlines()
-            for line in data:
-                if line.strip("\n") == item:
-                    # print(line)
-                    return line
-                else:
-                    return print("Item does not exist.")
+    def get_task_name(self):
+        return self.contents[0]
+
+    def set_task_name(self, name):
+        self.contents[0] = name
+
+    def get_date_of_next(self):
+        return self.contents[1]
+
+    def set_date_of_next(self, date):
+        if date is datetime.datetime:
+            self.contents[1] = date
+        else:
+            print("Invalid date entered, no change made")
+
+    def get_frequency(self):
+        return self.contents[2]
+
+    # requires an integer parameter for frequency
+    def set_frequency(self, freq):
+        if freq in range(len(self.frequency)):
+            self.contents[2] = self.frequency[freq]
+        else:
+            self.contents[2] = 0
+            assert "The frequency was invalid and defaulted to none"
+
+    # requires an integer parameter for status
+    # if we wanted to allow the string, you would just check in self.status instead of the range(len...))
+    def set_status(self, stat):
+        if stat in range(len(self.status)):
+            self.contents[3] = self.status[stat]
+        else:
+            self.contents[3] = 0
+            assert "The frequency was invalid and defaulted to none"

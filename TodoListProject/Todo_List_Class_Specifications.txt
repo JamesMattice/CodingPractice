@@ -3,6 +3,8 @@ Some combination of read me and design document.
 Simple list of tasks to do.
 	Data:
 		Name
+		date for next completion
+		frequency to be completed
 		Status (or just remove it from the list when completed)
 		
 	Methods:
