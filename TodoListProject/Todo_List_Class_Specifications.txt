@@ -17,16 +17,16 @@ Simple list of tasks to do.
 
 Full Functionality:
 	Data:
-		Name
-		frequency to be completed
+		(Base) Name
+		(Base) frequency to be completed
 		priority
 		number of completions
 		max number of completions
 		time since last completion
 		Category
-		date for next completion
+		(Base) date for next completion
 		time spent on task
-		Status of task
+		(Base) Status of task
 		Level of complexity/time
 		Notes about the task
 		Associated tasks (prereqs, similar, mutually exclusive)

@@ -25,9 +25,9 @@ class SuperBasicTodoList:
     def get_date_of_next(self):
         return self.contents[1]
 
-    def set_date_of_next(self, date):
-        if date is datetime.datetime:
-            self.contents[1] = date
+    def set_date_of_next(self, next_date):
+        if next_date is datetime.datetime:
+            self.contents[1] = next_date
         else:
             print("Invalid date entered, no change made")
 
@@ -37,7 +37,7 @@ class SuperBasicTodoList:
     # requires an integer parameter for frequency
     def set_frequency(self, freq):
         if freq in range(len(self.frequency)):
-            self.contents[2] = self.frequency[freq]
+            self.contents[2] = self.frequency[freq] # This is horrible, but works
         else:
             self.contents[2] = 0
             assert "The frequency was invalid and defaulted to none"
@@ -50,3 +50,6 @@ class SuperBasicTodoList:
         else:
             self.contents[3] = 0
             assert "The frequency was invalid and defaulted to none"
+
+    # James figure out Python switch statement
+    # Grayham figure out how to do KVP with datetime
