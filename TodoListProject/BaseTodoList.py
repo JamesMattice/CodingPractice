@@ -4,7 +4,7 @@
 import datetime
 
 
-class SuperBasicTodoList:
+class SuperBasicTodoList: # Currently, is actually a single task, not a TodoList
 
     frequency = ("once", "hourly", "daily", "weekly", "fortnight",
                  "monthly", "quarterly", "yearly", "infinite")
@@ -15,6 +15,9 @@ class SuperBasicTodoList:
         # self.contents = [name, date_of_next, frequency_of_repetition]
         self.contents = ["new task", datetime.datetime.max, self.frequency[0],
                          self.status[0]]
+
+    def get_contents(self):
+        return self.contents
 
     def get_task_name(self):
         return self.contents[0]
@@ -49,7 +52,15 @@ class SuperBasicTodoList:
             self.contents[3] = self.status[stat]
         else:
             self.contents[3] = 0
-            assert "The frequency was invalid and defaulted to none"
+            assert "The status was invalid and defaulted to none"
+
+    # Check to see if task is repeatable.
+    def is_repeatable(self):
+        if self.contents[2] != "once":
+            return True
+        else:
+            return False
+
 
     # James figure out Python switch statement
     # Grayham figure out how to do KVP with datetime
