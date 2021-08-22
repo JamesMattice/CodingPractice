@@ -30,9 +30,11 @@ Full Functionality:
 		Level of complexity/time
 		Notes about the task
 		Associated tasks (prereqs, similar, mutually exclusive)
+		    Ordered (next, previous, starting)
+
 	
 	Methods:
-		Get Daily list
+		***Get Daily list (How should this be implemented?  Any item that has a daily repetition, ones that have today's date, and what lists are open for consideration)
 		Notifications for time remaining to complete
 		Track time spent
 		(Data manipulation methods (get, set, add, remove, copy (elements or full lists), etc))
@@ -49,6 +51,11 @@ Full Functionality:
 		UI (user interface)
 		Progression 
 		Search Functions
+		    To-Do items
+		    Containing words
+		    Date
+		    Frequency
+		    etc.
 		
 		
 Brainstorming stuff

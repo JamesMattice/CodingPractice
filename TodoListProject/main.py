@@ -1,17 +1,33 @@
 """It's the main file of the TodoList project"""
+import TrackedTodoTask
+import TodoListFileManipulation
 
 
 def main():
-    #from ListUtilities import del_todo_list
-    #del_todo_list("list2.txt")
-    #"""Load the TodoList project"""
+    # from ListUtilities import del_todo_list
+    # del_todo_list("list2.txt")
+    # """Load the TodoList project"""
     # from BaseTodoList import SuperBasicTodoList
-    import TrackedTodoList
-    basic_list = TrackedTodoList.TrackedList()
-    basic_list.set_max_completions(1)
-    basic_list.complete_task()
-    basic_list.complete_task()
-    print(basic_list.get_number_of_completions())
+    sample_list = []
+    print("hello")
+    basic_task = TrackedTodoTask.TrackedTask()
+    basic_task.set_task_name("sleep")
+    basic_task.set_frequency("daily")
+    basic_task.set_max_completions(1)
+    basic_task.complete_task()
+    sample_list.append(basic_task)
+    print(basic_task.get_frequency())
+    another_task = TrackedTodoTask.TrackedTask()
+    another_task.set_task_name("more sleep")
+    another_task.set_status("completed")
+    print(another_task.get_status())
+    print(another_task.get_frequency())
+    print(basic_task.get_number_of_completions())
+    sample_list.append(another_task)
+    my_list = TodoListFileManipulation.TodoList("aList")
+    for task in sample_list:
+        my_list.add_item(task.__repr__())
+
 
 if __name__ == "__main__":
     main()

@@ -1,22 +1,35 @@
 """Creating a subclass of TodoList"""
-from BaseTodoList import SuperBasicTodoList
+from BaseTodoTask import SuperBasicTask
 import datetime
 
 
-class TrackedList(SuperBasicTodoList):
+class TrackedTask(SuperBasicTask):
+
+    number_of_completions = ""
+    max_completions = ""
+    last_completed = datetime
 
     def __init__(self):
-        SuperBasicTodoList.__init__(self)
+        SuperBasicTask.__init__(self)
         # self.contents.append(number_of_completions, max_completions, last_completed)
-        self.contents.extend([0, -1, datetime.datetime.max])
+        #self.contents.extend([0, -1, datetime.datetime.max])
+        self.number_of_completions = 0
+        self.max_completions = -1
+        self.last_completed = datetime.datetime.max
+
+    #create a string representation of this class
+    def __repr__(self):
+        contents = SuperBasicTask.__repr__(self)
+        contents = contents + ", " + str(self.number_of_completions) + ", " + str(self.max_completions) + ", " + str(self.last_completed)
+        return contents
 
     def get_number_of_completions(self):
-        return self.contents[4]  # This is horrible, find a better solution
+        return self.number_of_completions  # This is horrible, find a better solution
 
     def set_number_of_completions(self, num):
         if num >= 0:
             if num <= self.get_max_completions() or self.get_max_completions() == -1:
-                self.contents[4] = num
+                self.number_of_completions = num
             else:
                 # raise ValueError("Number is greater than max completions.")
                 print("Number is greater than max completions.")
@@ -25,16 +38,16 @@ class TrackedList(SuperBasicTodoList):
             print("Number is less than zero.")
 
     def get_max_completions(self):
-        return self.contents[5]
+        return self.max_completions
 
     def set_max_completions(self, num):
-        self.contents[5] = num
+        self.max_completions = num
 
     def get_last_completed(self):
-        return self.contents[6]
+        return self.last_completed
 
     def set_last_completed(self, completion_time):
-        self.contents[6] = completion_time
+        self.last_completed = completion_time
 
     # When base list updated, add task parameter to replace contents call
     # def complete_task(self):
@@ -47,7 +60,8 @@ class TrackedList(SuperBasicTodoList):
         # print("Number of completions: ", self.get_number_of_completions())
     def complete_task(self):
         self.set_number_of_completions(self.get_number_of_completions() + 1)
-
+        if self.get_number_of_completions() == self.get_max_completions():
+            self.set_status(self.status_tuple[len(self.status_tuple)-1])
     # Update number of completions
     # Update last completed date
     # Something to happen when number of completions hits max
