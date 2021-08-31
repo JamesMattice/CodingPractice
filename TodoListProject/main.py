@@ -1,6 +1,17 @@
 """It's the main file of the TodoList project"""
 import TrackedTodoTask
 import TodoListFileManipulation
+#from gtts import gTTS
+#from playsound import playsound
+#import pyttsx3
+
+
+#def main():
+#    text_val = "Hello there.  General kenobi"
+#    language = 'en'
+#    sound_obj = gTTS(text=text_val, lang=language, slow=False)
+#    sound_obj.save("example.mp3")
+#    playsound("example.mp3")
 
 
 def main():
