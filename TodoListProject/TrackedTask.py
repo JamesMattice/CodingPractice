@@ -1,5 +1,5 @@
 """Creating a subclass of TodoList"""
-from BaseTodoTask import SuperBasicTask
+from SuperBasicTask import SuperBasicTask
 import datetime
 
 
@@ -8,6 +8,7 @@ class TrackedTask(SuperBasicTask):
     number_of_completions = ""
     max_completions = ""
     last_completed = datetime
+    next_completion = datetime
 
     def __init__(self):
         SuperBasicTask.__init__(self)
@@ -16,6 +17,7 @@ class TrackedTask(SuperBasicTask):
         self.number_of_completions = 0
         self.max_completions = -1
         self.last_completed = datetime.datetime.max
+        self.next_completion = datetime.datetime.max  # Might be changing soon
 
     #create a string representation of this class
     def __repr__(self):
@@ -48,6 +50,12 @@ class TrackedTask(SuperBasicTask):
 
     def set_last_completed(self, completion_time):
         self.last_completed = completion_time
+
+    def get_next_completion(self):
+        return self.next_completion
+
+    def set_next_completion(self, time_object):  # datetime object
+        self.next_completion = time_object
 
     # When base list updated, add task parameter to replace contents call
     # def complete_task(self):

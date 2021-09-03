@@ -1,5 +1,5 @@
 """It's the main file of the TodoList project"""
-import TrackedTodoTask
+import TrackedTask
 import TodoListFileManipulation
 #from gtts import gTTS
 #from playsound import playsound
@@ -21,14 +21,14 @@ def main():
     # from BaseTodoList import SuperBasicTodoList
     sample_list = []
     print("hello")
-    basic_task = TrackedTodoTask.TrackedTask()
+    basic_task = TrackedTask.TrackedTask()
     basic_task.set_task_name("sleep")
     basic_task.set_frequency("daily")
     basic_task.set_max_completions(1)
     basic_task.complete_task()
     sample_list.append(basic_task)
     print(basic_task.get_frequency())
-    another_task = TrackedTodoTask.TrackedTask()
+    another_task = TrackedTask.TrackedTask()
     another_task.set_task_name("more sleep")
     another_task.set_status("completed")
     print(another_task.get_status())

@@ -10,6 +10,10 @@ class SuperBasicTask: # Currently, is actually a single task, not a TodoList
     date_of_next = datetime
     frequency_tuple = ("once", "hourly", "daily", "weekly", "fortnight",
                        "monthly", "quarterly", "yearly", "infinite")
+    __frequency_dict = {"once": datetime, "hourly": datetime.timedelta(hours=1), "daily": datetime.timedelta(days=1),
+                        "weekly": datetime.timedelta(weeks=1), "fortnight": datetime.timedelta(weeks=2),
+                        "monthly": datetime.timedelta(weeks=4), "quarterly": datetime.timedelta(weeks=16),
+                        "yearly": datetime.timedelta(weeks=52), "infinite": datetime.datetime.max}
     status_tuple = ("to be completed", "active task", "partially completed", "done")
 
     # why the hell do you have contents to hold member varialbes of self?, just have the name and date as variables and call them through self.<x>
@@ -20,7 +24,7 @@ class SuperBasicTask: # Currently, is actually a single task, not a TodoList
         self.status = self.status_tuple[0]
 
         # self.contents = [name, date_of_next, frequency_of_repetition]
-        #self.contents = ["new task", datetime.datetime.max, self.frequency[0],
+        # self.contents = ["new task", datetime.datetime.max, self.frequency[0],
                          #self.status[0]]
 
     def __repr__(self):
@@ -41,6 +45,10 @@ class SuperBasicTask: # Currently, is actually a single task, not a TodoList
             self.date_of_next = next_date
         else:
             print("Invalid date entered, no change made")
+
+    def calculate_date_of_next(self):
+        next_date = self.date_of_next + self.__frequency_dict[self.frequency]
+        self.set_date_of_next(next_date)
 
     def get_frequency(self):
         return self.frequency
@@ -74,5 +82,4 @@ class SuperBasicTask: # Currently, is actually a single task, not a TodoList
         else:
             return False
 
-
-    # Grayham figure out how to do KVP with datetime
+    # Grayham figure out how to do KVP with datetime -- possibly completed
