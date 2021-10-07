@@ -1,6 +1,7 @@
 """It's the main file of the TodoList project"""
 import TrackedTask
 import TodoListFileManipulation
+import PrioritizedTask
 #from gtts import gTTS
 #from playsound import playsound
 #import pyttsx3
@@ -19,6 +20,9 @@ def main():
     # del_todo_list("list2.txt")
     # """Load the TodoList project"""
     # from BaseTodoList import SuperBasicTodoList
+    print("trying the priority thingy")
+    prio_task = PrioritizedTask.PrioritizedTasks()
+    prio_task.setup_something()
     sample_list = []
     print("hello")
     basic_task = TrackedTask.TrackedTask()

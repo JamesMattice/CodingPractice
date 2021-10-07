@@ -1,0 +1,10 @@
+Make a simple task object
+- name of task
+- status of task
+(function to clean up task list)
+    - check for done status and remove it?
+
+The inherited task type should have more,
+    lets add a counter for number of times completed
+    for the date last completed
+    as well as next date scheduled
