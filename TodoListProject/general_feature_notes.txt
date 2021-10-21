@@ -1,0 +1,37 @@
+Stream of consciousness notes about the project cause I can't figure out a way to format it all yet.
+
+UX -> Feature-Set -> Value Proposition -> Unserved Needs/Problem Statement -> Target Customer
+
+
+UX -  
+	Basic Display window
+	Menu
+	Navigation
+	Search features (both for general use of the app and for things within the data)
+	Multiple Views for amounts of detailed information provided (i.e. popups that would show all the data of a given object)
+	Context specific views and navigation (i.e. a calendar(with day/week/month views))
+	*An Avatar? animated?
+	
+
+
+Feature-Set:
+	User Feedback (bugs, survey/suggestions)\
+	User Rating/review (might be handled by the service that hosts the app)
+	Data Security (user verification, password protection, etc)
+	Data Storage (could be local to the device, but would probably want to at least have a cloud backup)
+	**make this another section of the notes:::::Program Execution (would need to be able to run in the background [with low resource usage] and a notification system
+	Provide data analytics for user tasks  (the average time taken per task, estimation accuracy)
+	Check-in feature/accountability
+	
+	
+Value-Proposition
+	A multi-purpose digital assistant that would be able to be extended to provide extra features as development progressed.
+	Providing pretty much just the feature set's list of things.
+	Basic Set - task scheduling, interface with calendar programs
+	Extra features (all optional) - All the voice crap, multi-language support.
+	
+
+	
+Why would people want to use this?  What makes it different from other existing products?
+I want a Jarvis.
+Connecting smaller apps to a google calendar(or other calendar) system to provide a one-stop shop style with the added benefit of building reminders into things like your workout plans, shopping trips, etc.
