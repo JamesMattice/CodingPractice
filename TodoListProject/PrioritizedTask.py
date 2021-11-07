@@ -77,7 +77,7 @@ class PrioritizedTasks:
     def add_prioritized_task(self, task, level):
         if level in self.priority_levels.keys():
             self.priority_levels.__setitem__(level, task)
-            print(self.priority_levels[1])
+            #print(self.priority_levels[1])
 
 
 
