@@ -1,5 +1,5 @@
 """Creating a subclass of TodoList"""
-from SuperBasicTask import SuperBasicTask
+from .SuperBasicTask import SuperBasicTask
 import datetime
 
 

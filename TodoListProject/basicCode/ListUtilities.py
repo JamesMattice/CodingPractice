@@ -2,7 +2,7 @@
 
 import os
 
-LIST_PATH = "./featherDuster/"
+LIST_PATH = "../featherDuster/"
 
 """Method for returning a list"""
 
@@ -11,7 +11,7 @@ def get_todo_list(list_name):
     """Function to open a file"""
     cwd = os.getcwd()
     # print(cwd)
-    for entry in os.scandir(path="./featherDuster/"):  # os.scandir(path=cwd):
+    for entry in os.scandir(path="../featherDuster/"):  # os.scandir(path=cwd):
         # print(entry)
         if entry.is_file():
             if list_name == entry.name:

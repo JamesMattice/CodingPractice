@@ -1,6 +1,5 @@
 """It's the main file of the TodoList project"""
-import TrackedTask
-import TodoListFileManipulation
+from basicCode import TrackedTask, TodoListFileManipulation
 
 
 #from gtts import gTTS
