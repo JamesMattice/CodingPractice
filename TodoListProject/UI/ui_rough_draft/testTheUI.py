@@ -10,8 +10,8 @@
 import sys
 import os
 from PyQt5 import QtCore, QtWidgets
-sys.path.append(os.path.abspath('../basicCode'))
-import TrackedTask
+#sys.path.append(os.path.abspath('../../basicCode'))
+#import TrackedTask
 
 
 class Ui_MainWindow(object):
@@ -23,8 +23,8 @@ class Ui_MainWindow(object):
         self.calendarWidget = QtWidgets.QCalendarWidget(self.centralwidget)
         self.calendarWidget.setGeometry(QtCore.QRect(10, 30, 256, 190))
         self.calendarWidget.setObjectName("calendarWidget")
-        my_list = self.annoying()
-        self.calendarWidget.clicked['QDate'].connect(lambda: self.write_task(my_list))
+        #my_list = self.annoying()
+        #self.calendarWidget.clicked['QDate'].connect(lambda: self.write_task(my_list))
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
         self.tabWidget.setGeometry(QtCore.QRect(300, 40, 271, 191))
         self.tabWidget.setObjectName("tabWidget")
@@ -116,11 +116,11 @@ class Ui_MainWindow(object):
         sample_list.append(another_task)
         return sample_list
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = UiMainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+#if __name__ == "__main__":
+#    import sys
+#    app = QtWidgets.QApplication(sys.argv)
+#    MainWindow = QtWidgets.QMainWindow()
+#    ui = Ui_MainWindow()
+#    ui.setupUi(MainWindow)
+#    MainWindow.show()
+#    sys.exit(app.exec_())
