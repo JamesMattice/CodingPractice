@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>633</width>
-    <height>419</height>
+    <width>705</width>
+    <height>466</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,21 +19,9 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>281</width>
+      <width>256</width>
       <height>190</height>
      </rect>
-    </property>
-    <property name="gridVisible">
-     <bool>false</bool>
-    </property>
-    <property name="verticalHeaderFormat">
-     <enum>QCalendarWidget::NoVerticalHeader</enum>
-    </property>
-    <property name="navigationBarVisible">
-     <bool>true</bool>
-    </property>
-    <property name="dateEditEnabled">
-     <bool>true</bool>
     </property>
    </widget>
    <widget class="QTabWidget" name="tabWidget">
@@ -46,7 +34,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="TodayTab">
      <attribute name="title">
@@ -134,7 +122,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>633</width>
+     <width>705</width>
      <height>21</height>
     </rect>
    </property>
@@ -269,7 +257,7 @@
   </action>
   <action name="action_Add_Tasks">
    <property name="text">
-    <string>&amp;Add Task...</string>
+    <string>&amp;Add Tasks...</string>
    </property>
   </action>
   <action name="action_Duplicate_Task">
@@ -292,12 +280,12 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>366</x>
-     <y>208</y>
+     <x>364</x>
+     <y>175</y>
     </hint>
     <hint type="destinationlabel">
-     <x>391</x>
-     <y>166</y>
+     <x>389</x>
+     <y>122</y>
     </hint>
    </hints>
   </connection>
@@ -308,44 +296,12 @@
    <slot>reload()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>348</x>
-     <y>208</y>
+     <x>346</x>
+     <y>174</y>
     </hint>
     <hint type="destinationlabel">
      <x>443</x>
      <y>128</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>calendarWidget</sender>
-   <signal>clicked(QDate)</signal>
-   <receiver>today_list</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>178</x>
-     <y>200</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>317</x>
-     <y>148</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>calendarWidget</sender>
-   <signal>clicked(QDate)</signal>
-   <receiver>today_list</receiver>
-   <slot>doItemsLayout()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>203</x>
-     <y>247</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>347</x>
-     <y>172</y>
     </hint>
    </hints>
   </connection>
