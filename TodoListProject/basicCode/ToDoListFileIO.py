@@ -3,7 +3,7 @@ import os
 LIST_PATH = "./featherDuster/"
 
 
-class TodoList:
+class TodoListFileIO:
 
     def __init__(self, name='.txt'):
         if not name.endswith('.txt'):
@@ -60,4 +60,8 @@ class TodoList:
                     new_name.join('.txt')
                 os.rename(LIST_PATH + filename, LIST_PATH + new_name)
                 self.filename = new_name
+
+    #a placeholder for handling deleting all of the tasks in a list and their associations
+    #def delete_list(self, list_name):
+    #    return
 

@@ -1,5 +1,10 @@
 """It's the main file of the TodoList project"""
-from basicCode import TrackedTask, ToDoListFileIO
+import os
+import sys
+
+sys.path.append(os.path.abspath('./basicCode'))
+import TrackedTask
+import ToDoListFileIO
 
 
 #from gtts import gTTS
@@ -40,10 +45,10 @@ def main():
     print(another_task.get_frequency())
     print(basic_task.get_number_of_completions())
     sample_list.append(another_task)
-    my_list = ToDoListFileIO.TodoList("aList")
+    my_list = ToDoListFileIO.TodoListFileIO("aList")
     for task in sample_list:
         my_list.add_todo_element_to_file(task.__repr__())
-    a_new_list = ToDoListFileIO.TodoList().create_new_todo_list("it should work")
+    a_new_list = ToDoListFileIO.TodoListFileIO().create_new_todo_list("it should work")
     for task in sample_list:
         a_new_list.add_todo_element_to_file(task.__repr__())
     a_new_list.rename_list_file("it_was_renamed")

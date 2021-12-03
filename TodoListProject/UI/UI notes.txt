@@ -1,0 +1,10 @@
+Tools that could be useful:
+	'Code coverage'-esque testing
+	A factory type class that builds out the elements from the UI to build up the UI elements that are getting added from the 	designer.  Basically some way to register the UI pieces into our code base so that we know we are building everything we want to.
+	
+Other usefulness 
+	UI architecture - allowing for intelligent grouping of our UI support code
+	An easy breakdown of different UI designer UI files that we can generate and then add together in our python code so we don't put too much into the designer and create an unmanageably large file to work from.
+	
+	
+	

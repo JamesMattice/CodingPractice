@@ -1,5 +1,6 @@
 # put in control logic for different ways to prioritize a task here...
 import collections
+import TrackedTask, TimedTask
 
 
 class PrioritizedTasks:
@@ -57,7 +58,6 @@ class PrioritizedTasks:
                     level_reached = True
         return my_prio_list
 
-
     def make_prioritized_list(self, existing_list):
         if isinstance(existing_list, self.__class__):
             return existing_list
@@ -67,7 +67,7 @@ class PrioritizedTasks:
             # need some way to call the different ways to sort by priority that we want
             print('hey')
 
-    def get_priority(self, level):
+    def get_priority_level(self, level):
         if level in self.priority_levels.keys():
             # print(self.priority_levels.get(level))
             return self.priority_levels.get(level)
