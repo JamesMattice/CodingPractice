@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3783d335-df67-4080-a77f-03d6a1a8acb6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/featherDuster/aList.txt" beforeDir="false" afterPath="$PROJECT_DIR$/featherDuster/aList.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/featherDuster/it should work.txt" beforeDir="false" afterPath="$PROJECT_DIR$/featherDuster/it should work.txt" afterDir="false" />
     </list>
@@ -22,10 +23,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../venv" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../.." />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.UIWrapper">
     <configuration name="UIWrapper" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TodoListProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
