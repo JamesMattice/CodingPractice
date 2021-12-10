@@ -53,13 +53,25 @@ class TodoListFileIO:
         file.close()
         return self
 
-    def rename_list_file(self, new_name):
-        for filename in os.listdir(LIST_PATH):
+    def rename_list_file(self, new_name, save_dir=LIST_PATH):
+        for filename in os.listdir(save_dir):
             if filename == self.filename:
                 if not new_name.endswith('.txt'):
                     new_name.join('.txt')
-                os.rename(LIST_PATH + filename, LIST_PATH + new_name)
-                self.filename = new_name
+                # rename will fail if the chosen name already exists, allow user to choose to overwrite, use a new name, or cancel
+                if new_name in os.listdir(save_dir):
+                    self.naming_conflict(new_name)
+                    #self.rename_list_file(self, new_name) make a recursive call once the naming_conflict logic has been added
+                    return
+                try:
+                    os.rename(save_dir + filename, save_dir + new_name)
+                    self.filename = new_name
+                except FileExistsError:
+                    print("The rename attempt failed because a file with that name already exists")
+                    #
+
+    def naming_conflict(self, new_name):
+        print("i should be popping up a GUI window")
 
     #a placeholder for handling deleting all of the tasks in a list and their associations
     #def delete_list(self, list_name):
