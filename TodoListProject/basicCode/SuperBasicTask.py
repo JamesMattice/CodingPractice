@@ -16,7 +16,7 @@ class SuperBasicTask: # Currently, is actually a single task, not a TodoList
                         "yearly": datetime.timedelta(weeks=52), "infinite": datetime.datetime.max}
     status_tuple = ("to be completed", "active task", "partially completed", "done")
 
-    # why the hell do you have contents to hold member varialbes of self?, just have the name and date as variables and call them through self.<x>
+    # why the hell do you have contents to hold member variables of self?, just have the name and date as variables and call them through self.<x>
     def __init__(self):
         self.task_name = "new task"
         self.date_of_next = datetime.datetime.max
