@@ -1,21 +1,27 @@
 import os
 import sys
-from PyQt5 import QtCore, QtWidgets
+from PySide2 import QtCore, QtWidgets
 
 sys.path.append(os.path.abspath('../UI/ui_rough_draft'))
-from ui_rough_draft import testTheUI
+from ui_rough_draft.ui import ui_test2
+# from ui_rough_draft.converted_ui import ui_add_task_type_pick
 
 sys.path.append(os.path.abspath('../basicCode'))
 import TrackedTask
 
 
-class MainWindow(QtWidgets.QMainWindow, testTheUI.Ui_MainWindow):
+class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
-        self.assign_widgets()
-        self.retranslateUi(self)
-        self.show()
+        #self.assign_widgets()
+        #self.retranslateUi(self)
+        #self.show()
+        # self.windowFunctions()
+        # dialog = ui_add_task_type_pick.Ui_add_task_type_pick()
+
+    # def windowFunctions(self):
+    #     self.action_Add_Tasks.triggered.connect(ui_add_task_type_pick.Ui_add_task_type_pick().setupUi(add_task_type_pick))
 
     def assign_widgets(self):
         my_list = self.annoying()
@@ -46,6 +52,7 @@ class MainWindow(QtWidgets.QMainWindow, testTheUI.Ui_MainWindow):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    mainWin = MainWindow()
-    ret = app.exec_()
-    sys.exit(ret)
+
+    window = MainWindow()
+    window.show()
+    app.exec_()
