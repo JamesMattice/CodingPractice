@@ -1,11 +1,9 @@
 # put in control logic for different ways to prioritize a task here...
-import collections
 import TrackedTask, TimedTask
 
 
 class PrioritizedTasks:
 
-    # what i want is a way to have a key/pair to a sortable list? of tasks
     priority_levels = {'Highest': [], 'High': [], 'Medium': [], 'Low': [], 'Lowest': []}
     available_sorts = ('ascending', 'descending', 'greater_than_level', 'less_than_level')
 
@@ -63,13 +61,12 @@ class PrioritizedTasks:
             return existing_list
 
     def sort_list_by(self, some_list, some_enum):
-        if some_enum in some_enum:
+        if some_enum in self.available_sorts:
             # need some way to call the different ways to sort by priority that we want
             print('hey')
 
     def get_priority_level(self, level):
         if level in self.priority_levels.keys():
-            # print(self.priority_levels.get(level))
             return self.priority_levels.get(level)
         else:
             print("invalid priority level for get_priority function")

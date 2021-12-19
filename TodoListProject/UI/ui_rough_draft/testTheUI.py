@@ -93,28 +93,28 @@ class Ui_MainWindow(object):
         self.radioButton.setText(_translate("MainWindow", "RadioButton"))
         self.menuA_thing.setTitle(_translate("MainWindow", "A thing"))
         self.actionNew.setText(_translate("MainWindow", "New"))
-
-    def write_task(self, a_list):
-        for task in a_list:
-            self.today_list.addItem(task.get_task_name())
-
-    def annoying(self):
-        sample_list = []
-        basic_task = TrackedTask.TrackedTask()
-        basic_task.set_task_name("sleep")
-        basic_task.set_frequency("daily")
-        basic_task.set_max_completions(1)
-        basic_task.complete_task()
-        sample_list.append(basic_task)
-        print(basic_task.get_frequency())
-        another_task = TrackedTask.TrackedTask()
-        another_task.set_task_name("more sleep")
-        another_task.set_status("completed")
-        print(another_task.get_status())
-        print(another_task.get_frequency())
-        print(basic_task.get_number_of_completions())
-        sample_list.append(another_task)
-        return sample_list
+    #
+    # def write_task(self, a_list):
+    #     for task in a_list:
+    #         self.today_list.addItem(task.get_task_name())
+    #
+    # def annoying(self):
+    #     sample_list = []
+    #     basic_task = TrackedTask.TrackedTask()
+    #     basic_task.set_task_name("sleep")
+    #     basic_task.set_frequency("daily")
+    #     basic_task.set_max_completions(1)
+    #     basic_task.complete_task()
+    #     sample_list.append(basic_task)
+    #     print(basic_task.get_frequency())
+    #     another_task = TrackedTask.TrackedTask()
+    #     another_task.set_task_name("more sleep")
+    #     another_task.set_status("completed")
+    #     print(another_task.get_status())
+    #     print(another_task.get_frequency())
+    #     print(basic_task.get_number_of_completions())
+    #     sample_list.append(another_task)
+    #     return sample_list
 
 #if __name__ == "__main__":
 #    import sys
