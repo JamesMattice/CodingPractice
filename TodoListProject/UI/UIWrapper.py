@@ -29,16 +29,7 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
         add_tasks = ui_add_task_type_pick.Ui_add_task_type_pick()
         self.window = QtWidgets.QDialog()
         add_tasks.setupUi(self.window)
-        print(add_tasks.pushButton.isChecked())
-        taskType = add_tasks.comboBox.currentText()
-        if add_tasks.comboBox.currentIndexChanged:
-            print("Hello")
-        add_tasks.comboBox.currentIndexChanged.connect(lambda taskType: self.on_combobox_changed(add_tasks.comboBox))
-        #taskType = self.on_combobox_changed(add_tasks.comboBox)
-        print(taskType)
-        add_tasks.pushButton.clicked.connect(lambda: self.open_add_task_type(taskType))
-
-        #add_tasks.pushButton = QtWidgets.QPushButton(self.open_add_task_type(taskType))
+        add_tasks.pushButton.clicked.connect(lambda: self.open_add_task_type(add_tasks.comboBox.currentText()))
 
         self.window.setModal(True)
         self.window.show()
