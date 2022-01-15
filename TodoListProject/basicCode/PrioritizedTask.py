@@ -8,26 +8,36 @@ class PrioritizedTasks:
     available_sorts = ('ascending', 'descending', 'greater_than_level', 'less_than_level')
 
     # can these variables be in the init, or should they be local for the class?
-    def __init__(self):
+#    def __init__(self):
+ #       self.priority_levels = {'Highest': ['a thing', 'another thing'], 'High': ['a high thing'], 'Medium': ['a medium thing'], 'Low': ["and this is low"], 'Lowest': ['the lowest thing']}
+  #      self.sorted_tasks = dict
+
+    def __init__(self, existing_list=None):
         self.priority_levels = {'Highest': ['a thing', 'another thing'], 'High': ['a high thing'], 'Medium': ['a medium thing'], 'Low': ["and this is low"], 'Lowest': ['the lowest thing']}
         self.sorted_tasks = dict
+
+        if existing_list is not None:
+            if isinstance(existing_list, list):
+                for item in existing_list:
+                    self.add_prioritized_task(item, 'Medium')
+
 
     def test_priority_order(self):
         # this should sort the list in descending priority
         print(self.priority_levels)
         descending_priority = self.priority_levels
-        for level in descending_priority.keys():
-            curr_priority_level_tasks = descending_priority.get(level)
+        #for level in descending_priority.keys():
+       #     curr_priority_level_tasks = descending_priority.get(level)
             # print(level, curr_priority_level_tasks)
-            for task in curr_priority_level_tasks:
-                print("descending priority " + task)
+        #    for task in curr_priority_level_tasks:
+        #        print("descending priority " + curr_priority_level_tasks)
         # This is a working way to sort from lowest to highest (feel like its probably inefficient)
         ascending_priority = dict(reversed(list(self.priority_levels.items())))
-        for level in ascending_priority.keys():
-            curr_priority_level_tasks = ascending_priority.get(level)
+        #for level in ascending_priority.keys():
+        #    curr_priority_level_tasks = ascending_priority.get(level)
             # print(level, curr_priority_level_tasks)
-            for task in curr_priority_level_tasks:
-                print("ascending priority " + task)
+        #    for task in curr_priority_level_tasks:
+         #       print("ascending priority " + task.str())
         above_list = self.get_tasks_above_priority("Low", descending_priority)
         print(above_list)
         print(ascending_priority)
@@ -59,11 +69,25 @@ class PrioritizedTasks:
     def make_prioritized_list(self, existing_list):
         if isinstance(existing_list, self.__class__):
             return existing_list
+        else:
+            for item in existing_list:
+                self.add_prioritized_task(item, 'Medium')
+            return self
 
-    def sort_list_by(self, some_list, some_enum):
+    #implement greater than and less than functionality
+    def sort_priority_list_by(self, some_list, some_enum, some_level='none'):
         if some_enum in self.available_sorts:
             # need some way to call the different ways to sort by priority that we want
-            print('hey')
+            if some_enum == 'ascending':
+                self.order_by_ascending_priority(some_list)
+            elif some_enum == 'descending':
+                self.order_by_descending_priority(some_list)
+            elif some_enum == 'greater_than_level':
+                print("this sort is not implemented yet")
+            elif some_enum == 'less_than_level':
+                print("this sort is not implemented yet")
+        else:
+            print("this was an invalid sort option")
 
     def get_priority_level(self, level):
         if level in self.priority_levels.keys():
@@ -76,5 +100,34 @@ class PrioritizedTasks:
             self.priority_levels.__setitem__(level, task)
             #print(self.priority_levels[1])
 
+    # currently the default order I think
+    def order_by_descending_priority(self, input_list):
+        the_input = list(input_list)
+        first_category = the_input.pop(0)
+        if first_category == 'Lowest':
+            input_list.sort(reverse=True)
+        elif first_category == "Highest":
+            print('already in descending order')
+        # add error or try catch
+        else:
+            print("not in a recognized priority order")
+        #for level in descending_priority.keys():
+        #   curr_priority_level_tasks = descending_priority.get(level)
+        #    # print(level, curr_priority_level_tasks)
+        #    for task in curr_priority_level_tasks:
+        #        print("descending priority " + task)
+        return input_list
 
+    def order_by_ascending_priority(self, input_list):
+        the_input = list(input_list)
+        first_category = the_input.pop(0)
+        if first_category == 'Lowest':
+            print('already in ascending order')
+            return input_list
+        elif first_category == "Highest":
+            input_list.sort(reverse=True)
+        # should do a try/catch here probably, same with descending
+        else:
+            print("not in a recognized priority order")
+        return input_list
 

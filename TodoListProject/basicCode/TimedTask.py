@@ -5,7 +5,7 @@ import datetime
 
 class TimedTask(TrackedTask):
 
-    fastest_time = datetime.time(24, 60, 60)  # Could make empty if there is a check for number_of_completions
+    fastest_time = datetime.time(23, 59, 59)  # Could make empty if there is a check for number_of_completions
     average_time = datetime.time()  # Do I need to state these if I'm stating them in the __init__?
     previous_time = datetime.time()
     time_elapsed = datetime.time()
@@ -14,7 +14,7 @@ class TimedTask(TrackedTask):
 
     def __init__(self):
         TrackedTask.__init__(self)
-        self.fastest_time = datetime.time(24, 60, 60)
+        self.fastest_time = datetime.time(23, 59, 59)
         self.average_time = datetime.time()  # Might have to use timedelta to do this
         self.previous_time = datetime.time()
         self.time_elapsed = datetime.time()

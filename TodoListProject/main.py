@@ -3,8 +3,10 @@ import os
 import sys
 
 sys.path.append(os.path.abspath('./basicCode'))
+import PrioritizedTask
 import TrackedTask
 import ToDoListFileIO
+
 
 
 #from gtts import gTTS
@@ -52,6 +54,13 @@ def main():
     for task in sample_list:
         a_new_list.add_todo_element_to_file(task.__repr__())
     a_new_list.rename_list_file("it_was_renamed")
+
+    prio = PrioritizedTask.PrioritizedTasks()
+    prio.test_priority_order()
+
+    a_new_prio_list = PrioritizedTask.PrioritizedTasks(sample_list)
+    a_new_prio_list.add_prioritized_task(another_task, 'Highest')
+    a_new_prio_list.test_priority_order()
 
 if __name__ == "__main__":
     main()

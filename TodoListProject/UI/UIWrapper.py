@@ -1,10 +1,13 @@
 import os
 import sys
-from PySide2 import QtCore, QtWidgets
+from PySide2 import QtCore, QtWidgets, QtGui
+
 
 sys.path.append(os.path.abspath('../UI/ui_rough_draft'))
 from ui_rough_draft.ui import ui_test2
-# from ui_rough_draft.converted_ui import ui_add_task_type_pick
+from ui_rough_draft.converted_ui import ui_add_task_type_pick
+from ui_rough_draft.converted_ui import ui_add_task_superbasictask
+import UIUtilities
 
 sys.path.append(os.path.abspath('../basicCode'))
 import TrackedTask
@@ -17,11 +20,34 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
         #self.assign_widgets()
         #self.retranslateUi(self)
         #self.show()
-        # self.windowFunctions()
-        # dialog = ui_add_task_type_pick.Ui_add_task_type_pick()
+        self.window_functions()
 
-    # def windowFunctions(self):
-    #     self.action_Add_Tasks.triggered.connect(ui_add_task_type_pick.Ui_add_task_type_pick().setupUi(add_task_type_pick))
+    def window_functions(self):
+        self.action_Add_Tasks.triggered.connect(self.open_add_tasks)
+
+    def open_add_tasks(self):
+        add_tasks = ui_add_task_type_pick.Ui_add_task_type_pick()
+        self.window = QtWidgets.QDialog()
+        add_tasks.setupUi(self.window)
+        add_tasks.pushButton.clicked.connect(lambda: self.open_add_task_type(add_tasks.comboBox.currentText()))
+
+        self.window.setModal(True)
+        self.window.show()
+
+    def on_combobox_changed(self, combo):
+        print(combo.currentText())
+        return combo.currentText()
+
+    def open_add_task_type(self, taskType):
+        print(taskType)
+        new_task = UIUtilities.TaskTypeKVP[taskType]
+        print(new_task)
+        self.window = QtWidgets.QDialog()
+        new_task.setupUi(self.window)
+        self.window.setModal(True)
+        self.window.show()
+
+
 
     def assign_widgets(self):
         my_list = self.annoying()
