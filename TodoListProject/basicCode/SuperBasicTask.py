@@ -47,8 +47,15 @@ class SuperBasicTask: # Currently, is actually a single task, not a TodoList
             print("Invalid date entered, no change made")
 
     def calculate_date_of_next(self):
-        next_date = self.date_of_next + self.__frequency_dict[self.frequency]
-        self.set_date_of_next(next_date)
+        if (self.frequency is not 'once' or 'infinite') and (self.date_of_next != datetime.datetime.max):
+            return self.date_of_next + self.__frequency_dict[self.frequency]
+        else:
+            return self.date_of_next
+
+    def update_date_of_next(self, time_from=None):
+        if time_from is datetime.datetime:
+            self.set_date_of_next(time_from + self.calculate_date_of_next())
+        self.set_date_of_next(self.calculate_date_of_next())
 
     def get_frequency(self):
         return self.frequency

@@ -68,6 +68,10 @@ class TrackedTask(SuperBasicTask):
         # print("Number of completions: ", self.get_number_of_completions())
     def complete_task(self):
         self.set_number_of_completions(self.get_number_of_completions() + 1)
+        # Todo add check for Timezone config if needed
+        self.set_last_completed(datetime.datetime.now())
+        if self.is_repeatable():
+            self.update_date_of_next()
         if self.get_number_of_completions() == self.get_max_completions():
             self.set_status(self.status_tuple[len(self.status_tuple)-1])
     # Update number of completions

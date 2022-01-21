@@ -28,7 +28,6 @@ def main():
     # del_todo_list("list2.txt")
     # """Load the TodoList project"""
     # from BaseTodoList import SuperBasicTodoList
-    #print("trying the priority thingy")
     #prio_task = PrioritizedTask.PrioritizedTasks()
     #prio_task.get_priority('Highest')
     #prio_task.test_priority_order()
@@ -40,13 +39,13 @@ def main():
     basic_task.set_max_completions(1)
     basic_task.complete_task()
     sample_list.append(basic_task)
-    #print(basic_task.get_frequency())
+    print(basic_task.get_frequency())
     another_task = TrackedTask.TrackedTask()
     another_task.set_task_name("more sleep")
     another_task.set_status("completed")
-    #print(another_task.get_status())
-    #print(another_task.get_frequency())
-    #print(basic_task.get_number_of_completions())
+    print(another_task.get_status())
+    print(another_task.get_frequency())
+    print(basic_task.get_number_of_completions())
     sample_list.append(another_task)
     sbt = SuperBasicTask.SuperBasicTask()
     sbt.set_task_name("this was dumb")
@@ -65,6 +64,7 @@ def main():
     a_new_prio_list = PrioritizedTask.PrioritizedTasks(sample_list)
     a_new_prio_list.add_prioritized_task(another_task, 'Highest')
     a_new_prio_list.add_prioritized_task(sbt, 'Low')
+    a_new_prio_list.add_prioritized_task(sbt, 'Highest')
     a_new_prio_list.test_priority_order()
 
 if __name__ == "__main__":

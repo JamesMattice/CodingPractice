@@ -6,8 +6,7 @@ class PrioritizedTasks:
 
     priority_levels = {'Highest': [], 'High': [], 'Medium': [], 'Low': [], 'Lowest': []}
     available_sorts = ('ascending', 'descending', 'greater_than_level', 'less_than_level')
-
-    # can these variables be in the init, or should they be local for the class?
+    # need to implement greater than and less than
 
     def __init__(self, existing_list=None):
         self.priority_levels = {'Highest': ['a thing', 'another thing'], 'High': ['a high thing'], 'Medium': ['a medium thing'], 'Low': ["and this is low"], 'Lowest': ['the lowest thing']}
@@ -17,7 +16,6 @@ class PrioritizedTasks:
             if isinstance(existing_list, list):
                 for item in existing_list:
                     self.add_prioritized_task(item, 'Medium')
-
 
     def test_priority_order(self):
         # this should sort the list in descending priority
@@ -91,8 +89,7 @@ class PrioritizedTasks:
 
     def add_prioritized_task(self, task, level):
         if level in self.priority_levels.keys():
-            self.priority_levels.__setitem__(level, task)
-            #print(self.priority_levels[1])
+            self.priority_levels[level].append(task)
 
     # currently the default order I think
     def order_by_descending_priority(self, input_list):
