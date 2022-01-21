@@ -6,6 +6,7 @@ sys.path.append(os.path.abspath('./basicCode'))
 import PrioritizedTask
 import TrackedTask
 import ToDoListFileIO
+import SuperBasicTask
 
 
 
@@ -39,14 +40,17 @@ def main():
     basic_task.set_max_completions(1)
     basic_task.complete_task()
     sample_list.append(basic_task)
-    print(basic_task.get_frequency())
+    #print(basic_task.get_frequency())
     another_task = TrackedTask.TrackedTask()
     another_task.set_task_name("more sleep")
     another_task.set_status("completed")
-    print(another_task.get_status())
-    print(another_task.get_frequency())
-    print(basic_task.get_number_of_completions())
+    #print(another_task.get_status())
+    #print(another_task.get_frequency())
+    #print(basic_task.get_number_of_completions())
     sample_list.append(another_task)
+    sbt = SuperBasicTask.SuperBasicTask()
+    sbt.set_task_name("this was dumb")
+
     my_list = ToDoListFileIO.TodoListFileIO("aList")
     for task in sample_list:
         my_list.add_todo_element_to_file(task.__repr__())
@@ -60,6 +64,7 @@ def main():
 
     a_new_prio_list = PrioritizedTask.PrioritizedTasks(sample_list)
     a_new_prio_list.add_prioritized_task(another_task, 'Highest')
+    a_new_prio_list.add_prioritized_task(sbt, 'Low')
     a_new_prio_list.test_priority_order()
 
 if __name__ == "__main__":

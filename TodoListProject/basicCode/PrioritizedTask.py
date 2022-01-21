@@ -8,9 +8,6 @@ class PrioritizedTasks:
     available_sorts = ('ascending', 'descending', 'greater_than_level', 'less_than_level')
 
     # can these variables be in the init, or should they be local for the class?
-#    def __init__(self):
- #       self.priority_levels = {'Highest': ['a thing', 'another thing'], 'High': ['a high thing'], 'Medium': ['a medium thing'], 'Low': ["and this is low"], 'Lowest': ['the lowest thing']}
-  #      self.sorted_tasks = dict
 
     def __init__(self, existing_list=None):
         self.priority_levels = {'Highest': ['a thing', 'another thing'], 'High': ['a high thing'], 'Medium': ['a medium thing'], 'Low': ["and this is low"], 'Lowest': ['the lowest thing']}
@@ -24,20 +21,17 @@ class PrioritizedTasks:
 
     def test_priority_order(self):
         # this should sort the list in descending priority
-        print(self.priority_levels)
         descending_priority = self.priority_levels
-        #for level in descending_priority.keys():
-       #     curr_priority_level_tasks = descending_priority.get(level)
+        for level in descending_priority.keys():
+            curr_priority_level_tasks = descending_priority.get(level)
             # print(level, curr_priority_level_tasks)
-        #    for task in curr_priority_level_tasks:
-        #        print("descending priority " + curr_priority_level_tasks)
+            # for task in curr_priority_level_tasks:
+            print("descending priority " + curr_priority_level_tasks.__str__())
         # This is a working way to sort from lowest to highest (feel like its probably inefficient)
         ascending_priority = dict(reversed(list(self.priority_levels.items())))
-        #for level in ascending_priority.keys():
-        #    curr_priority_level_tasks = ascending_priority.get(level)
-            # print(level, curr_priority_level_tasks)
-        #    for task in curr_priority_level_tasks:
-         #       print("ascending priority " + task.str())
+        for level in ascending_priority.keys():
+            curr_priority_level_tasks = ascending_priority.get(level)
+            print("ascending priority " + curr_priority_level_tasks.__str__())
         above_list = self.get_tasks_above_priority("Low", descending_priority)
         print(above_list)
         print(ascending_priority)
@@ -111,11 +105,6 @@ class PrioritizedTasks:
         # add error or try catch
         else:
             print("not in a recognized priority order")
-        #for level in descending_priority.keys():
-        #   curr_priority_level_tasks = descending_priority.get(level)
-        #    # print(level, curr_priority_level_tasks)
-        #    for task in curr_priority_level_tasks:
-        #        print("descending priority " + task)
         return input_list
 
     def order_by_ascending_priority(self, input_list):
