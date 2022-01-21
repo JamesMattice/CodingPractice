@@ -7,3 +7,4 @@ from ui_rough_draft.converted_ui import ui_add_task_superbasictask,ui_add_task_t
 
 
 TaskTypeKVP = {"SuperBasicTask": ui_add_task_superbasictask.Ui_add_task_superbasictask(), "TrackedTask": ui_add_task_trackedtask.Ui_add_task_trackedtask(), "PrioritizedTask": ui_add_task_prioritizedtask.Ui_add_task_prioritizedtask(), "TimedTask": ui_add_task_timedtask.Ui_add_task_timedtask()}
+

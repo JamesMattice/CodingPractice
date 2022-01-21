@@ -41,7 +41,7 @@ class SuperBasicTask: # Currently, is actually a single task, not a TodoList
         return self.date_of_next
 
     def set_date_of_next(self, next_date):
-        if next_date is datetime.datetime:
+        if type(next_date) is datetime.datetime:
             self.date_of_next = next_date
         else:
             print("Invalid date entered, no change made")

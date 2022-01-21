@@ -1,6 +1,9 @@
 import os
 import sys
 from PySide2 import QtCore, QtWidgets, QtGui
+import datetime
+
+
 
 
 sys.path.append(os.path.abspath('../UI/ui_rough_draft'))
@@ -11,6 +14,7 @@ import UIUtilities
 
 sys.path.append(os.path.abspath('../basicCode'))
 import TrackedTask
+import SuperBasicTask
 
 
 class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
@@ -46,8 +50,17 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
         new_task.setupUi(self.window)
         self.window.setModal(True)
         self.window.show()
+        if taskType == "SuperBasicTask":
+            new_task.pushButton_2.clicked.connect(lambda: self.add_super_basic_task(new_task))
 
-
+    def add_super_basic_task(self, task):
+        test = SuperBasicTask.SuperBasicTask()
+        test.set_task_name(task.lineEdit.text())
+        print(test.get_task_name)
+        test.set_date_of_next(task.dateTimeEdit.dateTime().toPython())
+        test.set_frequency(task.comboBox_2.currentText().lower())
+        print(test.get_frequency)
+        ## Work on this next time.
 
     def assign_widgets(self):
         my_list = self.annoying()
