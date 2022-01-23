@@ -4,8 +4,6 @@ from PySide2 import QtCore, QtWidgets, QtGui
 import datetime
 
 
-
-
 sys.path.append(os.path.abspath('../UI/ui_rough_draft'))
 from ui_rough_draft.ui import ui_test2
 from ui_rough_draft.converted_ui import ui_add_task_type_pick
@@ -15,43 +13,48 @@ import UIUtilities
 sys.path.append(os.path.abspath('../basicCode'))
 import TrackedTask
 import SuperBasicTask
+import TimedTask
+import PrioritizedTask
 
 
 class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setupUi(self)
-        #self.assign_widgets()
-        #self.retranslateUi(self)
-        #self.show()
+        # self.assign_widgets()
+        # self.retranslateUi(self)
+        # self.show()
         self.window_functions()
 
-    def window_functions(self):
-        self.action_Add_Tasks.triggered.connect(self.open_add_tasks)
 
-    def open_add_tasks(self):
+    def window_functions(self):
+        self.action_Add_Tasks.triggered.connect(self.open_add_tasks_dialog)
+
+    def open_add_tasks_dialog(self):
         add_tasks = ui_add_task_type_pick.Ui_add_task_type_pick()
         self.window = QtWidgets.QDialog()
         add_tasks.setupUi(self.window)
-        add_tasks.pushButton.clicked.connect(lambda: self.open_add_task_type(add_tasks.comboBox.currentText()))
+        add_tasks.pushButton.clicked.connect(lambda: self.open_add_task_type_dialog(add_tasks.comboBox.currentText()))
 
         self.window.setModal(True)
         self.window.show()
 
-    def on_combobox_changed(self, combo):
-        print(combo.currentText())
-        return combo.currentText()
-
-    def open_add_task_type(self, taskType):
-        print(taskType)
-        new_task = UIUtilities.TaskTypeKVP[taskType]
+    def open_add_task_type_dialog(self, task_type):
+        print(task_type)
+        new_task = UIUtilities.TaskTypeKVP[task_type]
         print(new_task)
         self.window = QtWidgets.QDialog()
         new_task.setupUi(self.window)
         self.window.setModal(True)
         self.window.show()
-        if taskType == "SuperBasicTask":
+        if task_type == "SuperBasicTask":
             new_task.pushButton_2.clicked.connect(lambda: self.add_super_basic_task(new_task))
+        if task_type == "TrackedTask":
+            new_task.pushButton_2.clicked.connect(lambda: self.add_tracked_task(new_task))
+        # if task_type == "PrioritizedTask":
+        #     new_task.pushButton_2.clicked.connect(lambda: self.add_prioritized_task(new_task))
+        if task_type == "TimedTask":
+            new_task.pushButton_2.clicked.connect(lambda: self.add_timed_task(new_task))
 
     def add_super_basic_task(self, task):
         test = SuperBasicTask.SuperBasicTask()
@@ -60,7 +63,35 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
         test.set_date_of_next(task.dateTimeEdit.dateTime().toPython())
         test.set_frequency(task.comboBox_2.currentText().lower())
         print(test.get_frequency)
-        ## Work on this next time.
+        # Work on this next time.
+
+    def add_tracked_task(self, task):
+        test = TrackedTask.TrackedTask()
+        test.set_task_name(task.lineEdit.text())
+        print(test.get_task_name)
+        test.set_date_of_next(task.dateTimeEdit.dateTime().toPython())
+        test.set_frequency(task.comboBox_2.currentText().lower())
+        test.set_max_completions(task.spinBox.value())
+        print(test)
+
+    # def add_prioritized_task(self, task):
+    #     test = PrioritizedTask.PrioritizedTasks()
+    #     test.set_task_name(task.lineEdit.text())
+    #     print(test.get_task_name)
+    #     test.set_date_of_next(task.dateTimeEdit.dateTime().toPython())
+    #     test.set_frequency(task.comboBox_2.currentText().lower())
+    #     test.set_max_completions(task.spinBox.value())
+    #
+    #     print(test)
+
+    def add_timed_task(self, task):
+        test = TimedTask.TimedTask()
+        test.set_task_name(task.lineEdit.text())
+        print(test.get_task_name)
+        test.set_date_of_next(task.dateTimeEdit.dateTime().toPython())
+        test.set_frequency(task.comboBox_2.currentText().lower())
+        test.set_max_completions(task.spinBox.value())
+        print(test)
 
     def assign_widgets(self):
         my_list = self.annoying()
