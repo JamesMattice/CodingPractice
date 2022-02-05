@@ -3,7 +3,7 @@ import os
 import sys
 
 sys.path.append(os.path.abspath('./basicCode'))
-import PrioritizedTask
+from PrioritizedTaskUtilities import PrioritizedTaskUtilities
 import TrackedTask
 import ToDoListFileIO
 import SuperBasicTask
@@ -58,10 +58,10 @@ def main():
         a_new_list.add_todo_element_to_file(task.__repr__())
     a_new_list.rename_list_file("it_was_renamed")
 
-    prio = PrioritizedTask.PrioritizedTasks()
+    prio = PrioritizedTaskUtilities()
     prio.test_priority_order()
 
-    a_new_prio_list = PrioritizedTask.PrioritizedTasks(sample_list)
+    a_new_prio_list = PrioritizedTaskUtilities(sample_list)
     a_new_prio_list.add_prioritized_task(another_task, 'Highest')
     a_new_prio_list.add_prioritized_task(sbt, 'Low')
     a_new_prio_list.add_prioritized_task(sbt, 'Highest')

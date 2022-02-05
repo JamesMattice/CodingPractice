@@ -82,11 +82,8 @@ class SuperBasicTask: # Currently, is actually a single task, not a TodoList
             self.status = self.status_tuple[0]
             assert "The status was invalid and defaulted to none"
 
-    # Check to see if task is repeatable.
     def is_repeatable(self):
         if self.frequency != "once":
             return True
         else:
             return False
-
-    # Grayham figure out how to do KVP with datetime -- possibly completed

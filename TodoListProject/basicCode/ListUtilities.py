@@ -4,8 +4,8 @@ import os
 
 LIST_PATH = "../featherDuster/"
 
-"""Method for returning a list"""
 
+"""Method for returning a list"""
 def get_todo_list(list_name):
 
     """Function to open a file"""
@@ -22,7 +22,6 @@ def get_todo_list(list_name):
 
 
 """Find the list."""
-
 def find_todo_list(list_name):  # refactor to be a find_file
 
     entry = get_todo_list(list_name)
@@ -49,7 +48,6 @@ def find_todo_list(list_name):  # refactor to be a find_file
 
 
 """Method to delete a list."""
-
 def del_todo_list(list_name):
 
     """Remove file."""
@@ -59,7 +57,6 @@ def del_todo_list(list_name):
 
 
 """Method to make a new list."""
-
 def create_todo_list():
 
     """Prompt user for list name."""

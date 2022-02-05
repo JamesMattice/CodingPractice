@@ -1,0 +1,1 @@
+# A place to put shared variables for the Test suite, like relative paths
