@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>705</width>
-    <height>466</height>
+    <height>465</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,9 +19,21 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>256</width>
+      <width>281</width>
       <height>190</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="gridVisible">
+     <bool>false</bool>
+    </property>
+    <property name="navigationBarVisible">
+     <bool>true</bool>
+    </property>
+    <property name="dateEditEnabled">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QTabWidget" name="tabWidget">
@@ -34,7 +46,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="TodayTab">
      <attribute name="title">
@@ -280,12 +292,12 @@
    <slot>clear()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>364</x>
-     <y>175</y>
+     <x>366</x>
+     <y>208</y>
     </hint>
     <hint type="destinationlabel">
-     <x>389</x>
-     <y>122</y>
+     <x>391</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -296,8 +308,8 @@
    <slot>reload()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>346</x>
-     <y>174</y>
+     <x>348</x>
+     <y>208</y>
     </hint>
     <hint type="destinationlabel">
      <x>443</x>

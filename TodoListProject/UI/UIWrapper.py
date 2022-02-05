@@ -8,6 +8,7 @@ sys.path.append(os.path.abspath('../UI/ui_rough_draft'))
 from ui_rough_draft.ui import ui_test2
 from ui_rough_draft.converted_ui import ui_add_task_type_pick
 from ui_rough_draft.converted_ui import ui_add_task_superbasictask
+from ui_rough_draft.converted_ui import ui_new_tasklist
 import UIUtilities
 
 sys.path.append(os.path.abspath('../basicCode'))
@@ -15,6 +16,8 @@ import TrackedTask
 import SuperBasicTask
 import TimedTask
 import PrioritizedTask
+import ToDoListFileIO
+
 
 
 class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
@@ -29,6 +32,16 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
 
     def window_functions(self):
         self.action_Add_Tasks.triggered.connect(self.open_add_tasks_dialog)
+        self.actionNew.triggered.connect(self.open_new_tasklist_dialog)
+
+    def open_new_tasklist_dialog(self):
+        input_window = ui_new_tasklist.Ui_new_tasklist()
+        self.window = QtWidgets.QDialog()
+        input_window.setupUi(self.window)
+        input_window.pushButton_2.clicked.connect(lambda: ToDoListFileIO.TodoListFileIO().create_new_todo_list(input_window.lineEdit.text()))
+        # change slot to a function, and add a close.window at the end of the function
+        self.window.setModal(True)
+        self.window.show()
 
     def open_add_tasks_dialog(self):
         add_tasks = ui_add_task_type_pick.Ui_add_task_type_pick()
