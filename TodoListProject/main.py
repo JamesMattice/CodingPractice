@@ -1,12 +1,18 @@
 """It's the main file of the TodoList project"""
 import os
 import sys
+from pathlib import Path
+import ProjectDefinitions
+from basicCode import test_file
 
-sys.path.append(os.path.abspath('./basicCode'))
-from PrioritizedTaskUtilities import PrioritizedTaskUtilities
-import TrackedTask
-import ToDoListFileIO
-import SuperBasicTask
+# sys.path.append(os.path.abspath('./basicCode'))
+# basicCodePath = ProjectDefinitions.ROOT_DIR.joinpath('./basicCode')
+# sys.path.append(basicCodePath)
+from basicCode import PrioritizedTaskUtilities
+from basicCode import TrackedTask
+from basicCode import ToDoListFileIO
+from basicCode import SuperBasicTask
+from basicCode import ToDoListFileIO
 
 
 
@@ -39,13 +45,13 @@ def main():
     basic_task.set_max_completions(1)
     basic_task.complete_task()
     sample_list.append(basic_task)
-    print(basic_task.get_frequency())
+    #print(basic_task.get_frequency())
     another_task = TrackedTask.TrackedTask()
     another_task.set_task_name("more sleep")
     another_task.set_status("completed")
-    print(another_task.get_status())
-    print(another_task.get_frequency())
-    print(basic_task.get_number_of_completions())
+    #print(another_task.get_status())
+    #print(another_task.get_frequency())
+    #print(basic_task.get_number_of_completions())
     sample_list.append(another_task)
     sbt = SuperBasicTask.SuperBasicTask()
     sbt.set_task_name("this was dumb")
@@ -54,18 +60,23 @@ def main():
     for task in sample_list:
         my_list.add_todo_element_to_file(task.__repr__())
     a_new_list = ToDoListFileIO.TodoListFileIO().create_new_todo_list("it should work")
+    print(a_new_list.target_file)
     for task in sample_list:
         a_new_list.add_todo_element_to_file(task.__repr__())
     a_new_list.rename_list_file("it_was_renamed")
+    a_brand_new_list = ToDoListFileIO.TodoListFileIO().create_new_todo_list()
+    print(a_brand_new_list.filename)
+    a_brand_new_list.add_todo_element_to_file("hey it worked, neat")
 
-    prio = PrioritizedTaskUtilities()
-    prio.test_priority_order()
+    #prio = PrioritizedTaskUtilities()
+    #prio.test_priority_order()
 
-    a_new_prio_list = PrioritizedTaskUtilities(sample_list)
-    a_new_prio_list.add_prioritized_task(another_task, 'Highest')
-    a_new_prio_list.add_prioritized_task(sbt, 'Low')
-    a_new_prio_list.add_prioritized_task(sbt, 'Highest')
-    a_new_prio_list.test_priority_order()
+    #a_new_prio_list = PrioritizedTaskUtilities(sample_list)
+    #a_new_prio_list.add_prioritized_task(another_task, 'Highest')
+    #a_new_prio_list.add_prioritized_task(sbt, 'Low')
+    #a_new_prio_list.add_prioritized_task(sbt, 'Highest')
+    #a_new_prio_list.test_priority_order()
 
 if __name__ == "__main__":
     main()
+
