@@ -28,7 +28,7 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
         # self.retranslateUi(self)
         # self.show()
         self.window_functions()
-
+        self.current_tasklist = None
 
     def window_functions(self):
         self.action_Add_Tasks.triggered.connect(self.open_add_tasks_dialog)
@@ -38,10 +38,14 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
         input_window = ui_new_tasklist.Ui_new_tasklist()
         self.window = QtWidgets.QDialog()
         input_window.setupUi(self.window)
-        input_window.pushButton_2.clicked.connect(lambda: ToDoListFileIO.TodoListFileIO().create_new_todo_list(input_window.lineEdit.text()))
+        input_window.pushButton_2.clicked.connect(lambda: self.new_tasklist_helper(input_window.lineEdit.text()))
+        input_window.pushButton_2.clicked.connect(lambda: self.window.close())
         # change slot to a function, and add a close.window at the end of the function
         self.window.setModal(True)
         self.window.show()
+
+    def new_tasklist_helper(self, text):
+        self.current_tasklist = ToDoListFileIO.TodoListFileIO().create_new_todo_list(text)
 
     def open_add_tasks_dialog(self):
         add_tasks = ui_add_task_type_pick.Ui_add_task_type_pick()
@@ -68,6 +72,7 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
         #     new_task.pushButton_2.clicked.connect(lambda: self.add_prioritized_task(new_task))
         if task_type == "TimedTask":
             new_task.pushButton_2.clicked.connect(lambda: self.add_timed_task(new_task))
+        new_task.pushButton_2.clicked.connect(lambda: self.window.close())
 
     def add_super_basic_task(self, task):
         test = SuperBasicTask.SuperBasicTask()
@@ -76,7 +81,7 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
         test.set_date_of_next(task.dateTimeEdit.dateTime().toPython())
         test.set_frequency(task.comboBox_2.currentText().lower())
         print(test.get_frequency)
-        # Work on this next time.
+        self.current_tasklist.add_todo_element_to_file(test)
 
     def add_tracked_task(self, task):
         test = TrackedTask.TrackedTask()
@@ -85,6 +90,7 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
         test.set_date_of_next(task.dateTimeEdit.dateTime().toPython())
         test.set_frequency(task.comboBox_2.currentText().lower())
         test.set_max_completions(task.spinBox.value())
+        self.current_tasklist.add_todo_element_to_file(test)
         print(test)
 
     # def add_prioritized_task(self, task):
@@ -94,7 +100,7 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
     #     test.set_date_of_next(task.dateTimeEdit.dateTime().toPython())
     #     test.set_frequency(task.comboBox_2.currentText().lower())
     #     test.set_max_completions(task.spinBox.value())
-    #
+    #     self.current_tasklist.add_todo_element_to_file(test)
     #     print(test)
 
     def add_timed_task(self, task):
@@ -105,6 +111,7 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
         test.set_frequency(task.comboBox_2.currentText().lower())
         test.set_max_completions(task.spinBox.value())
         print(test)
+        self.current_tasklist.add_todo_element_to_file(test)
 
     def assign_widgets(self):
         my_list = self.annoying()

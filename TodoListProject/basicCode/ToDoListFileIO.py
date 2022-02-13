@@ -13,7 +13,7 @@ class TodoListFileIO:
 
     def add_todo_element_to_file(self, item):
         with open((LIST_PATH + self.filename), 'a') as f:
-            f.write(item + '\n')
+            f.write(item.__str__() + '\n')
 
     def remove_todo_element_from_file(self, item):
         with open((LIST_PATH + self.filename), 'r+') as f:
