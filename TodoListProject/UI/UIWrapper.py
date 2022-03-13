@@ -33,6 +33,15 @@ class MainWindow(QtWidgets.QMainWindow, ui_test2.Ui_MainWindow):
     def window_functions(self):
         self.action_Add_Tasks.triggered.connect(self.open_add_tasks_dialog)
         self.actionNew.triggered.connect(self.open_new_tasklist_dialog)
+        self.actionOpen.triggered.connect(self.open_file_dialog)
+
+    def open_file_dialog(self):
+        load = QtWidgets.QFileDialog.getOpenFileName(
+            self, "Open Tasklist", "", "Text Files (*.txt)"
+        )
+
+        if load is not None:
+            self.current_tasklist = ToDoListFileIO.TodoListFileIO(os.path.basename(load[0]))
 
     def open_new_tasklist_dialog(self):
         input_window = ui_new_tasklist.Ui_new_tasklist()
