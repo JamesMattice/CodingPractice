@@ -1,5 +1,6 @@
 from pathlib import Path
 import ProjectDefinitions
+from linecache import getline
 
 
 
@@ -36,18 +37,20 @@ class TodoListFileIO:
                     f.write(line)
             f.truncate()
 
-    def get_todo_element_from_file(self, item):
+    def get_todo_element_from_file(self, item=None, line_num=None):
         with Path.open(self.target_file, 'r') as f:
             data = f.readlines()
-            for line in data:
-                if line.strip("\n") == item:
-                    # print(line)
-                    return line
-                else:
-                    return print("Item does not exist.")
+            if item is not None:
+                for line in data:
+                    if line.strip("\n") == item:
+                        # print(line)
+                        return line
+                    else:
+                        return print("get_todo_element_from_file failed because Item does not exist.")
+            elif line_num is not None and line_num > 0:
+                return data[line_num-1]
 
     def create_new_todo_list(self, name=None):
-        print(self.save_dir)
         if name is None:
             i = 1
             if Path.exists(self.save_dir.joinpath('newList.txt')):
@@ -56,7 +59,6 @@ class TodoListFileIO:
                     # print('its cycling through the while %s' % i)
                     i += 1
                 name = 'newList%s.txt' % i
-                print(name)
             else:
                 name = 'newList.txt'
         elif not name.endswith('.txt'):
